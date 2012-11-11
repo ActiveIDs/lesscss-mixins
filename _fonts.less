@@ -1,0 +1,24 @@
+/**
+ * less css: FONTS
+ * 
+ * @section		lesscss-mixins
+ * @subsection	fonts
+ * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
+ */
+
+/**
+ * Create a font face definition. Expects fonts with same name in fonts directory.
+ *
+ * @example	  @font-face { .fontFaceFam('Uni-Sans-Regular'); }
+ * 
+ * @function  .fontFaceFam
+ * @param 	  {String}	name	font face family name
+ * @return 						font definition in open type, woff, true type
+ */
+.fontFaceFam(@name){
+	font-family: @name;
+	src: url('fonts/@{name}.eot');
+	src: url('fonts/@{name}.eot?#iefix') format('embedded-opentype'),
+		 url('fonts/@{name}.woff') format('woff'),
+		 url('fonts/@{name}.ttf') format('truetype');
+}

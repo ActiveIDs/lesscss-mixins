@@ -1,0 +1,72 @@
+/**
+ * less css: BORDER RADIUS
+ * 
+ * @section     lesscss-mixins
+ * @subsection  border-radius
+ * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
+ */
+
+/**
+ * @function  .borderRadius
+ * @type      {Number|String}   radius    as value with unit (eg. 10px, .1em)
+ * @return                                cross browser border radius
+ */
+.borderRadius(@radius:5px)
+{
+       -moz-border-radius:  @radius;
+    -webkit-border-radius:  @radius;
+            border-radius:  @radius;
+
+    .backgroundClip(); // prevents background color from leaking outside border.
+}
+
+
+/**
+ * create cross browser border radius with pie htc fallback for IE
+ * @function  .borderRadiusPie
+ * @type      {Number|String}   radius    as value with unit (eg. 10px, .1em)
+ * @return                                cross browser border radius
+ */
+.borderRadiusPie(@radius:5px) 
+{
+       -moz-border-radius: @radius;  
+    -webkit-border-radius: @radius;  
+            border-radius: @radius; 
+ 
+    *position : relative;  
+    *z-index  : 1;  
+    *zoom     : 1;  
+    behavior  : url(PIE.htc); 
+
+    .backgroundClip(); // prevents background color from leaking outside border. 
+}
+
+
+/**
+ * @function  .borderRadiusCorners
+ * @param     {Number|String}   tl    top left corner radius, defaults to zero
+ * @param     {Number|String}   tr    top right corner radius, defaults to zero
+ * @param     {Number|String}   bl    bottom left corner radius, defaults to zero
+ * @param     {Number|String}   br    bottom right corner radius, defaults to zero
+ * @return                            cross browser border radius
+ */
+.borderRadiusCorners(@tl:0,@tr:0,@bl:0,@br:0)
+{
+       -moz-border-radius-topleft:      @tl;
+    -webkit-border-top-left-radius:     @tl;
+            border-top-left-radius:     @tl;
+
+       -moz-border-radius-topright:     @tr;
+    -webkit-border-top-right-radius:    @tr;
+            border-top-right-radius:    @tr;
+
+       -moz-border-radius-bottomleft:   @bl;
+    -webkit-border-bottom-left-radius:  @bl;
+            border-bottom-left-radius:  @bl;
+
+       -moz-border-radius-bottomright:  @br;
+    -webkit-border-bottom-right-radius: @br;
+            border-bottom-right-radius: @br;
+
+    .backgroundClip(); // prevents background color from leaking outside border.
+}

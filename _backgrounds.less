@@ -1,0 +1,50 @@
+/**
+ * less css: BACKGROUNDS
+ * 
+ * @section		lesscss-mixins
+ * @subsection	backgrounds
+ * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
+ */
+
+/**
+ * Prevents background color from leaking outside border (http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed)
+ * @function .backgroundClip
+ * @return   cross browser background clip
+ */
+.backgroundClip()
+{  
+       -moz-background-clip: padding;      // Firefox 1.0-3.6 
+    -webkit-background-clip: padding-box;  // Safari 3-4, Chrome, iOS 1-3.2, Android <e;1.6
+            background-clip: padding-box;  // Opera 10.5, IE9, Safari 5+, Chrome, Firefox 4+, iOS 4, Android 2.1+   
+}  
+
+/**
+ * @function .backgroundSize
+ * @type   	 {Number|String}    [width]     as value with unit, defaults to 100%
+ * @type   	 {Number|String} 	[height]    as value with unit, defaults to 100%
+ * @return                                  cross browser background size
+ */
+.backgroundSize(@width:100%, @height:100%) 
+{
+  -webkit-background-size: @width @height;  // Saf3-4
+     -moz-background-size: @width @height;  // FF3.6
+          background-size: @width @height;  // Opera, IE9, Saf5, Chrome, FF4
+}
+
+/**
+ * @function .backgroundRgbaFilter
+ * @param    {Number}   [red]   expects value between 0 and 255, defaults to 0
+ * @param    {Number}   [green] expects value between 0 and 255, defaults to 0
+ * @param    {Number}   [blue]  expects value between 0 and 255, defaults to 0
+ * @param    {Number}   [alpha] expects value between 0 and 1, defaults to .8
+ * @param    {String}   [iehex] expects hexidecimal value starting with # and alpha as value between 00 and 99 as last to values
+ * @return                      cross browser rgba background
+ */
+.backgroundRgbaFilter(@red:0, @green:0, @blue:0, @alpha:.8, @iehex:"#99000000") 
+{  
+    background: transparent;  
+    background: rgba(@red, @green, @blue, @alpha);  
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr={@iehex},endColorstr={@iehex})";  
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr=@iehex,endColorstr=@iehex);  
+    zoom: 1;  
+} 

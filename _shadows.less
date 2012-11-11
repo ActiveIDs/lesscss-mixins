@@ -1,0 +1,45 @@
+/**
+ * less css: SHADOWS
+ * 
+ * @section     lesscss-mixins
+ * @subsection  shadows
+ * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
+ */
+
+
+.boxShadow(@x, @y, @blur, @radius, @color)
+{
+    @box-shadow: @x @y @blur @radius @color;
+
+       -moz-box-shadow: @box-shadow;
+    -webkit-box-shadow: @box-shadow;
+            box-shadow: @box-shadow;
+}
+
+
+.boxShadowPie(@horizontalOffset:5px, @verticalOffset:5px, @blurRadius:8px, @shadowColor:#555, @spreadRadius:0px, @inset){  
+    @box-shadow: @inset @horizontalOffset @verticalOffset @blurRadius @spreadRadius @shadowColor;
+
+       -moz-box-shadow: @box-shadow;  
+    -webkit-box-shadow: @box-shadow;  
+            box-shadow: @box-shadow; 
+ 
+    *position: relative;  
+    *z-index: 1;  
+    *zoom: 1;  
+    behavior: url(PIE.htc);  
+}  
+
+
+.textShadow(@color:#555, @horizontalOffset:2px, @verticalOffset:2px, @blur:3px){  
+    @text-shadow: @color @horizontalOffset @verticalOffset @blur;
+
+       -moz-text-shadow: @text-shadow;  
+    -webkit-text-shadow: @text-shadow; 
+            text-shadow: @text-shadow;   
+
+        filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=@horizontalOffset, OffY=verticalOffset, Color='@color', Positive='true'); 
+    -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=@horizontalOffset, OffY=verticalOffset, Color='@color', Positive='true')"; 
+ 
+    *zoom: 1;
+} 

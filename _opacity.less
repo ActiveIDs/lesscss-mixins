@@ -1,0 +1,35 @@
+/**
+ * less css: OPACITY
+ * 
+ * Collection of common lesscss mixins to create cross browser css3 rules. 
+ * Rules are mainly gathered from http://css3please.com and http://net.tutsplus.com/tutorials/php/how-to-squeeze-the-most-out-of-less
+ * And are re-written to lesscss mixins (http://lesscss.org)
+ *
+ * @section		lesscss-mixins
+ * @subsection	opacity
+ * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
+ */
+
+/**
+ * @function 	.opacity
+ * @param   	{Number}  opacity   expects value between 0 and 1
+ * @return                      	cross browser opacity
+ */
+.opacity(@opacity){
+    -moz-opacity: @opacity;
+         opacity: @opacity;
+}
+
+/**
+ * extended opacity rule with IE filter (http://freestyle-developments.co.uk/blog/?p=400)
+ * @function 	.opacityFilter
+ * @param  		{Number}  opacity   expects value between 0 and 1
+ * @return                      	cross browser opacity with IE filter
+ */
+.opacityFilter(@opacity){
+    @ieOpacity: @opacity * 100;
+      -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieOpacity})"; // IE 8
+          filter: ~"alpha(opacity=@{ieOpacity})";                                   // IE 5-7
+    -moz-opacity: @opacity;
+         opacity: @opacity;
+}

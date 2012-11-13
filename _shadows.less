@@ -1,45 +1,87 @@
 /**
  * less css: SHADOWS
- * 
+ *
  * @section     lesscss-mixins
  * @subsection  shadows
  * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
  */
 
 
-.boxShadow(@x, @y, @blur, @radius, @color)
+/**
+ * @method  .boxShadow
+ * @param   {Number|String}     x       horizontal offset, eg. 5px
+ * @param   {Number|String}     y       vertical offset, eg. 5px
+ * @param   {Number|String}     blur    blur radius, defaults to 0
+ * @param   {Number|String}     spread  spread radius, defaults to 0
+ * @param   {String}            color   shadow color, defaults to black
+ * @return                              cross browser box shadow
+ */
+.boxShadow(@x, @y, @blur:0, @spread:0, @color:#000)
 {
-    @box-shadow: @x @y @blur @radius @color;
+    @box-shadow: @x @y @blur @spread @color;
 
        -moz-box-shadow: @box-shadow;
     -webkit-box-shadow: @box-shadow;
             box-shadow: @box-shadow;
 }
 
+/**
+ * box shadow with pie htc fallback for IE
+ * @method  .boxShadowPie
+ * @param   {Number|String}     x       horizontal offset, eg. 5px
+ * @param   {Number|String}     y       vertical offset, eg. 5px
+ * @param   {Number|String}     blur    blur radius, defaults to 0
+ * @param   {Number|String}     spread  spread radius, defaults to 0
+ * @param   {String}            color   shadow color, defaults to black
+ * @param   {Boolean}           inset   defaults to false
+ * @return                              cross browser box shadow
+ */
+.boxShadowPie(@x:5px, @y:5px, @blur:8px, @spread:0px, @color:#555, @inset){
+    @box-shadow: @inset @x @y @blur @spread @color;
 
-.boxShadowPie(@horizontalOffset:5px, @verticalOffset:5px, @blurRadius:8px, @shadowColor:#555, @spreadRadius:0px, @inset){  
-    @box-shadow: @inset @horizontalOffset @verticalOffset @blurRadius @spreadRadius @shadowColor;
+       -moz-box-shadow: @box-shadow;
+    -webkit-box-shadow: @box-shadow;
+            box-shadow: @box-shadow;
 
-       -moz-box-shadow: @box-shadow;  
-    -webkit-box-shadow: @box-shadow;  
-            box-shadow: @box-shadow; 
- 
-    *position: relative;  
-    *z-index: 1;  
-    *zoom: 1;  
-    behavior: url(PIE.htc);  
-}  
-
-
-.textShadow(@color:#555, @horizontalOffset:2px, @verticalOffset:2px, @blur:3px){  
-    @text-shadow: @color @horizontalOffset @verticalOffset @blur;
-
-       -moz-text-shadow: @text-shadow;  
-    -webkit-text-shadow: @text-shadow; 
-            text-shadow: @text-shadow;   
-
-        filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=@horizontalOffset, OffY=verticalOffset, Color='@color', Positive='true'); 
-    -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=@horizontalOffset, OffY=verticalOffset, Color='@color', Positive='true')"; 
- 
+    *position: relative;
+    *z-index: 1;
     *zoom: 1;
-} 
+    behavior: url(PIE.htc);
+}
+
+/**
+ * @method  .textShadow
+ * @param   {String}            color   shadow color, defaults to gray
+ * @param   {Number|String}     x       horizontal offset, eg. 5px
+ * @param   {Number|String}     y       vertical offset, eg. 5px
+ * @param   {Number|String}     blur    blur radius, defaults to 0
+ * @return                              cross browser text shadow
+ */
+.textShadow(@color:#555, @x:2px, @y:2px, @blur:3px){
+    @text-shadow: @color @x @y @blur;
+
+       -moz-text-shadow: @text-shadow;
+    -webkit-text-shadow: @text-shadow;
+            text-shadow: @text-shadow;
+}
+
+/**
+ * @method  .textShadowFilter
+ * @param   {String}            color   shadow color, defaults to gray
+ * @param   {Number|String}     x       horizontal offset, eg. 5px
+ * @param   {Number|String}     y       vertical offset, eg. 5px
+ * @param   {Number|String}     blur    blur radius, defaults to 0
+ * @return                              cross browser text shadow with IE filter
+ */
+.textShadowFilter(@color:#555, @x:2px, @y:2px, @blur:3px){
+    @text-shadow: @color @x @y @blur;
+
+       -moz-text-shadow: @text-shadow;
+    -webkit-text-shadow: @text-shadow;
+            text-shadow: @text-shadow;
+
+        filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=@x, OffY=y, Color='@color', Positive='true');
+    -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=@x, OffY=y, Color='@color', Positive='true')";
+
+    *zoom: 1;
+}

@@ -1,6 +1,6 @@
 /**
  * less css: GRADIENTS
- * 
+ *
  * @section     lesscss-mixins
  * @subsection  gradients
  * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
@@ -11,17 +11,17 @@
  * @function .linearGradient
  * @param    {String}   color1  hexidecimal value or color alias, defaults to black
  * @param    {String}   color2  hexidecimal value or color alias, defaults to white
- * @return
+ * @return                      cross browser linear gradient
  */
-.linearGradient(@color1:#000000, @color2:#FFFFFF) 
-{  
-    background: -moz-linear-gradient(                                     @color1,               @color2);  
-    background:     -webkit-gradient(linear, left top, left bottom, from( @color1),           to(@color2));  
-        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr=@color1,   endColorstr=@color2);  
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@color1,   endColorstr=@color2)"; 
-    
-    .backgroundClip();  
-} 
+.linearGradient(@color1:#000000, @color2:#FFFFFF)
+{
+    background: -moz-linear-gradient(                                     @color1,               @color2);
+    background:     -webkit-gradient(linear, left top, left bottom, from( @color1),           to(@color2));
+        filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr=@color1,   endColorstr=@color2);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@color1,   endColorstr=@color2)";
+
+    .backgroundClip();
+}
 
 /**
  * linear gradient with pie htc fallback for IE
@@ -31,28 +31,28 @@
  * @param    {String}   lgd     angle for gradient, defaults to 90deg
  * @param    {String}   wkd1    gradient starting point, defaults to left top
  * @param    {String}   wkd2    gradient end point, defaults to left bottom
- * @return
+ * @return                      cross browser linear gradient
  */
-.linearGradientPie(@color1:#000000, @color2:#FFFFFF, @lgd:90deg, @wkd1:left top, @wkd2:left bottom) 
-{  
-    background: -moz-linear-gradient(@lgd, @color1, @color2);  
-    background: -webkit-gradient(linear, @wkd1, @wkd2, from(@color1), to(@color2));  
+.linearGradientPie(@color1:#000000, @color2:#FFFFFF, @lgd:90deg, @wkd1:left top, @wkd2:left bottom)
+{
+    background: -moz-linear-gradient(@lgd, @color1, @color2);
+    background: -webkit-gradient(linear, @wkd1, @wkd2, from(@color1), to(@color2));
 
-    *position: relative;  
-    *z-index: 1;  
-    *zoom: 1;  
-    -pie-background: linear-gradient(@lgd, @color2, @color1);  
+    *position: relative;
+    *z-index: 1;
+    *zoom: 1;
+    -pie-background: linear-gradient(@lgd, @color2, @color1);
 
     .backgroundClip();
-} 
+}
 
 /**
  * @function .boxGradient
  * @param    {String}   color1  hexidecimal value or color alias, defaults to black
  * @param    {String}   color2  hexidecimal value or color alias, defaults to white
- * @return
+ * @return                      cross browser box gradient
  */
-.boxGradient(@color1:#000000, @color2:#FFFFFF) 
+.boxGradient(@color1:#000000, @color2:#FFFFFF)
 {
   background-color: @color1;
   background-image: -webkit-gradient(linear, left top, left bottom, from(@color1), to(@color2)); /* Saf4+, Chrome */

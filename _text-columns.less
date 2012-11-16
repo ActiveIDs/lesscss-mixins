@@ -1,0 +1,107 @@
+/**
+ * less css: TEXT COLUMNS
+ * 
+ * @section     lesscss-mixins
+ * @subsection  text-columns
+ * @author      Jasper Moelker <J.B.Moelker@ActiveIDs.nl>
+ */
+
+
+/**
+ * A shorthand property for setting column-width and column-count.
+ * @method 	.textColumns
+ * @param 	{Number|String}	width 	expects "auto" or a length that specifies the width of the columns
+ * @param	{number}		count 	the number of columns
+ * @return 							cross browser text columns rule
+ */
+.textColumns(@width, @count){
+	-webkit-columns: @width @count; /* Safari and Chrome */
+	   -moz-columns: @width @count; /* Firefox */
+	        columns: @width @count;
+}
+
+/**
+ * Specifies the width of the columns.
+ * @method 	.textColumnWidth
+ * @param 	{Number|String}	width 	expects "auto" or a length that specifies the width of the columns
+ * @return 							cross browser column width
+ */
+.textColumnWidth(@width){
+	-webkit-column-width: @width; /* Safari and Chrome */
+	   -moz-column-width: @width; /* Firefox */
+	        column-width: @width;
+}
+     
+ /**
+  * Specifies the number of columns an element should be divided into.
+ * @method 	.textColumnWidth
+ * @param	{number}		count 	the number of columns
+ * @return 						cross browser column count
+  */
+.textColumnCount(@count){	
+    -webkit-column-count: @count; /* Safari and Chrome */
+       -moz-column-count: @count; /* Firefox */
+            column-count: @count; 
+}
+
+/**
+ * @method 	.textColumnGap
+ * @param 	{Number|String}	gap 	expects "normal" or a specified length that will set the gap between the columns
+ * @return 							cross browser column gap
+ */
+.textColumnGap(@gap){
+	-webkit-column-gap: @gap; /* Safari and Chrome */
+	   -moz-column-gap: @gap; /* Firefox */
+	        column-gap: @gap;
+}
+
+/**
+ * Specifies the style of the rule between columns.
+ * @method	.textColumnRule
+ * @param	{Number|String}	width 	expects "auto" or a length that specifies the width of each column
+ * @param	{String}		style 	expects none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset, defaults to outset
+ * @param	{String}		color 	hexidecimal value or color alias, defaults to white
+ * @return 							cross browser column rule
+ */
+.textColumnRule(@width, @style:outset, @color:white){
+	-webkit-column-rule: @width @style @color; /* Safari and Chrome */
+	   -moz-column-rule: @width @style @color; /* Firefox */
+	    	column-rule: @width @style @color;
+}
+
+/**
+ * Specifies the width of the rule between columns.
+ * @method  .textColumnRuleWidth
+ * @param	{Number|String}	width 	expects "auto" or a length that specifies the width of each column
+ * @return 							cross browser column rule width
+ */
+.textColumnRuleWidth(@width){
+	-webkit-column-rule-width: @width; /* Safari and Chrome */
+	   -moz-column-rule-width: @width; /* Firefox */
+	    	column-rule-width: @width;
+}
+
+
+/**
+ * Specifies the style of the rule between columns.
+ * @method  .textColumnRuleStyle
+ * @param	{String}	style 	expects none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset, defaults to outset
+ * @return 						cross browser column rule style
+ */
+.textColumnRuleStyle(@style){
+	-webkit-column-rule-style: @style; /* Safari and Chrome */
+	   -moz-column-rule-style: @style; /* Firefox */
+	    	column-rule-style: @style;	
+}
+
+/**
+ * Specifies the color of the rule between columns.
+ * @method  .textColumnRuleColor
+ * @param	{String}	color  	hexidecimal value or color alias
+ * @return 						cross browser column rule color
+ */
+.textColumnRuleColor(@color){
+	-webkit-column-rule-color: @color; /* Safari and Chrome */
+	   -moz-column-rule=color: @color; /* Firefox */
+	    	column-rule-color: @color;	
+}
